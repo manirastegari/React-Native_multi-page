@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, TextInput, StyleSheet, Modal, FlatList, TouchableOpacity, SafeAreaView } from 'react-native';
+import { View, Text, TextInput, StyleSheet, Modal, FlatList, TouchableOpacity, SafeAreaView, Alert } from 'react-native';
 import CustomButton from '../components/CustomButton';
 
 const DashboardScreen = ({ navigation }) => {
@@ -10,6 +10,14 @@ const DashboardScreen = ({ navigation }) => {
   const [modalVisible, setModalVisible] = useState(false);
 
   const handleCheckAvailability = () => {
+    if (!studentId || !name || !people) {
+      Alert.alert('Validation Error', 'Please fill in all fields.');
+      return;
+    }
+    if (isNaN(people)) {
+      Alert.alert('Validation Error', 'Number of People must be a number.');
+      return;
+    }
     navigation.navigate('Booking', { studentId, name, people, room });
   };
 
@@ -88,7 +96,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
-    marginTop: 50, // Adjust this value as needed
+    marginTop: 50,
   },
   modalItem: {
     padding: 20,
@@ -100,7 +108,7 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     paddingVertical: 16,
-    paddingHorizontal: 20, // Add horizontal padding here
+    paddingHorizontal: 20,
   }
 });
 

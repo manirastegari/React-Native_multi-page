@@ -9,7 +9,7 @@ const HeaderButton = ({ title, onPress }) => (
 
 const styles = StyleSheet.create({
   button: {
-    backgroundColor: 'black', // Different color
+    backgroundColor: 'black',
     padding: 10,
     borderRadius: 8,
     alignItems: 'center',

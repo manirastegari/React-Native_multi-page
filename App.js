@@ -5,7 +5,7 @@ import { CommonActions } from '@react-navigation/native';
 import SignInScreen from './screens/SignInScreen';
 import DashboardScreen from './screens/DashboardScreen';
 import BookingScreen from './screens/BookingScreen';
-import HeaderButton from './components/HeaderButton'; // Import the custom header button
+import HeaderButton from './components/HeaderButton'; 
 
 const Stack = createNativeStackNavigator();
 
