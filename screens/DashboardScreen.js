@@ -15,43 +15,45 @@ const DashboardScreen = ({ navigation }) => {
 
   return (
     <SafeAreaView style={styles.container}>
-      <Text style={styles.title}>Dashboard</Text>
-      <TextInput
-        style={styles.input}
-        placeholder="Student ID"
-        value={studentId}
-        onChangeText={setStudentId}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Name"
-        value={name}
-        onChangeText={setName}
-      />
-      <TextInput
-        style={styles.input}
-        placeholder="Number of People"
-        value={people}
-        onChangeText={setPeople}
-        keyboardType="numeric"
-      />
-      <TouchableOpacity onPress={() => setModalVisible(true)} style={styles.pickerButton}>
-        <Text>Select Room: {room}</Text>
-      </TouchableOpacity>
-      <Modal visible={modalVisible} transparent={true}>
-        <View style={styles.modalContainer}>
-          <FlatList
-            data={['A101', 'A102', 'A103', 'A104', 'A105']}
-            renderItem={({ item }) => (
-              <TouchableOpacity onPress={() => { setRoom(item); setModalVisible(false); }}>
-                <Text style={styles.modalItem}>{item}</Text>
-              </TouchableOpacity>
-            )}
-            keyExtractor={(item) => item}
-          />
+        <View style={styles.Container2}>
+            <Text style={styles.title}>Dashboard</Text>
+            <TextInput
+                style={styles.input}
+                placeholder="Student ID"
+                value={studentId}
+                onChangeText={setStudentId}
+            />
+            <TextInput
+                style={styles.input}
+                placeholder="Name"
+                value={name}
+                onChangeText={setName}
+            />
+            <TextInput
+                style={styles.input}
+                placeholder="Number of People"
+                value={people}
+                onChangeText={setPeople}
+                keyboardType="numeric"
+            />
+            <TouchableOpacity onPress={() => setModalVisible(true)} style={styles.pickerButton}>
+                <Text>Select Room: {room}</Text>
+            </TouchableOpacity>
+            <Modal visible={modalVisible} transparent={true}>
+                <View style={styles.modalContainer}>
+                <FlatList
+                    data={['A101', 'A102', 'A103', 'A104', 'A105']}
+                    renderItem={({ item }) => (
+                    <TouchableOpacity onPress={() => { setRoom(item); setModalVisible(false); }}>
+                        <Text style={styles.modalItem}>{item}</Text>
+                    </TouchableOpacity>
+                    )}
+                    keyExtractor={(item) => item}
+                />
+                </View>
+            </Modal>
+            <CustomButton title="Check Availability" onPress={handleCheckAvailability} />
         </View>
-      </Modal>
-      <CustomButton title="Check Availability" onPress={handleCheckAvailability} />
     </SafeAreaView>
   );
 };
@@ -59,9 +61,7 @@ const DashboardScreen = ({ navigation }) => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    justifyContent: 'center',
-    paddingVertical: 16,
-    paddingHorizontal: 20, 
+    justifyContent: 'center'   
   },
   title: {
     fontSize: 24,
@@ -95,6 +95,12 @@ const styles = StyleSheet.create({
     backgroundColor: '#fff',
     marginVertical: 1,
     textAlign: 'center',
+  },
+  Container2: {
+    flex: 1,
+    justifyContent: 'center',
+    paddingVertical: 16,
+    paddingHorizontal: 20, // Add horizontal padding here
   }
 });
 
